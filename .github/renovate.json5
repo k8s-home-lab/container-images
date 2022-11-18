@@ -1,0 +1,18 @@
+{
+  extends: [
+    "config:base"
+  ],
+  packageRules: [
+    {
+      description: "Auto-merge Ubuntu base updates",
+      matchDatasources: ["docker"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchPackageNames: [
+        "ghcr.io/k8s-at-home/ubuntu-focal",
+        "ghcr.io/k8s-at-home/ubuntu-jammy"
+      ]
+    }
+  ]
+}
