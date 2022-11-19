@@ -1,0 +1,29 @@
+kah ALL= EXEC: NOPASSWD: /usr/sbin/iptables-legacy-save
+kah ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables-legacy-save
+kah ALL= EXEC: NOPASSWD: /usr/sbin/iptables-nft-save
+kah ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables-nft-save
+kah ALL= EXEC: NOPASSWD: /usr/sbin/iptables -F OUTPUT
+kah ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables -F OUTPUT
+kah ALL= EXEC: NOPASSWD: /usr/sbin/iptables -A OUTPUT *
+kah ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables -A OUTPUT *
+kah ALL= EXEC: NOPASSWD: /usr/sbin/ip -4 route add *
+kah ALL= EXEC: NOPASSWD: /usr/sbin/ip -6 route add *
+kah ALL= EXEC: NOPASSWD: /usr/bin/wg show *
+kah ALL= EXEC: NOPASSWD: /usr/bin/wg-quick up *
+kah ALL= EXEC: NOPASSWD: /usr/bin/wg-quick down *
+kah ALL= EXEC: NOPASSWD: /usr/bin/find /etc/wireguard -type f *
+kah ALL= EXEC: NOPASSWD: /usr/bin/update-alternatives --set iptables *
+kah ALL= EXEC: NOPASSWD: /usr/bin/update-alternatives --set ip6tables *
+kah ALL= EXEC: NOPASSWD: /app/manual-connections/run_setup.sh
+
+Defaults env_keep +="TZ"
+Defaults env_keep +="VPN_PROTOCOL"
+Defaults env_keep +="DISABLE_IPV6"
+Defaults env_keep +="AUTOCONNECT"
+Defaults env_keep +="PREFERRED_REGION"
+Defaults env_keep +="MAX_LATENCY"
+Defaults env_keep +="PIA_DNS"
+Defaults env_keep +="PIA_PF"
+Defaults env_keep +="PIA_USER"
+Defaults env_keep +="PIA_PASS"
+

@@ -11,7 +11,7 @@ _shutdown () {
     else
         echo "[INFO] Caught signal to shutdown."
     fi
-    
+
     if [[ "${INTERFACE_UP}" == 'true' ]]; then
         echo "[INFO] Shutting down VPN!"
         sudo /usr/bin/wg-quick down "${INTERFACE}"

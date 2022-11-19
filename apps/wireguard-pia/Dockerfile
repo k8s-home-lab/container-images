@@ -1,34 +1,29 @@
-FROM ghcr.io/k8s-at-home/ubuntu-focal:rolling@sha256:c001f386f4860b3353dcb40dceafa4274bd7b77c8aa2def745fec26d58c8a0fd
+FROM ghcr.io/aste88/wireguard:rolling@sha256:3ee036e2102ae4efe7790ea25c4fdd0a43e15e455b71c5096574771bbc61ca69
 
 ARG VERSION
 USER root
-COPY ./apps/wireguard/build /build
+COPY ./apps/wireguard-pia/build /build
 WORKDIR /tmp
 
 # hadolint ignore=DL3008,DL3015,SC2086
 RUN \
-  export EXTRA_INSTALL_ARG="build-essential git" \
-  && apt-get -qq update \
+  apt-get -qq update \
   && \
   apt-get -qq install -y \
-    iptables \
-    iproute2 \
-    openresolv \
-    inetutils-ping \
-    sudo \
-    ${EXTRA_INSTALL_ARG} \
-  && git clone https://git.zx2c4.com/wireguard-tools . \
-  && git clone https://git.zx2c4.com/wireguard-linux-compat \
-  && git checkout "v${VERSION}" \
-  && make -C src -j"$(nproc)" \
-  && make -C src install \
-  && sed -i "s:sysctl -q net.ipv4.conf.all.src_valid_mark=1:# skipping setting net.ipv4.conf.all.src_valid_mark:" /usr/bin/wg-quick \
+    curl \
+    jq \
+    unzip \
+  && \
+  curl -fsSL -o /tmp/app.zip "https://github.com/pia-foss/manual-connections/archive/refs/tags/v${VERSION}.zip" \
+  && unzip -q /tmp/app.zip -d  /tmp \
+  && mv /tmp/manual-connections-${VERSION} /app/manual-connections \
+  && \
+  rm /etc/sudoers.d/kah \
   && mv /build/sudoers_kah /etc/sudoers.d/kah \
   && chown root:root /etc/sudoers.d/* \
   && chmod 644 /etc/sudoers.d/* \
   && \
-  apt-get remove -y ${EXTRA_INSTALL_ARG} \
-  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && apt-get autoremove -y \
   && apt-get clean \
   && \
@@ -41,7 +36,7 @@ RUN \
   && printf "umask %d" "${UMASK}" >> /etc/bash.bashrc
 
 USER kah
+WORKDIR /app/manual-connections
 
-COPY ./apps/wireguard/shim/* /shim/
-COPY ./apps/wireguard/entrypoint.sh /entrypoint.sh
+COPY ./apps/wireguard-pia/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]

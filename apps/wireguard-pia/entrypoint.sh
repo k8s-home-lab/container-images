@@ -11,7 +11,7 @@ _shutdown () {
     else
         echo "[INFO] Caught signal to shutdown."
     fi
-    
+
     if [[ "${INTERFACE_UP}" == 'true' ]]; then
         echo "[INFO] Shutting down VPN!"
         sudo /usr/bin/wg-quick down "${INTERFACE}"
@@ -22,16 +22,11 @@ trap _shutdown EXIT
 
 source "/shim/iptables-backend.sh"
 
-CONFIGS=`sudo /usr/bin/find /etc/wireguard -type f -printf "%f\n"`
-if [[ -z "${CONFIGS}" ]]; then
-    echo "[ERROR] No configuration files found in /etc/wireguard" >&2
-    exit 1
-fi
+sudo /app/manual-connections/run_setup.sh
 
 CONFIG=`echo $CONFIGS | head -n 1`
 INTERFACE="${CONFIG%.*}"
 
-sudo /usr/bin/wg-quick up "${INTERFACE}"
 INTERFACE_UP=true
 
 source "/shim/killswitch.sh"
