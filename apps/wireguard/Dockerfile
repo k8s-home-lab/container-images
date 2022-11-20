@@ -1,4 +1,4 @@
-FROM ghcr.io/k8s-at-home/ubuntu-focal:rolling@sha256:c001f386f4860b3353dcb40dceafa4274bd7b77c8aa2def745fec26d58c8a0fd
+FROM ghcr.io/aste88/ubuntu-focal:rolling@sha256:dcd1c67f0944051da3eacfcbfee0afe173ab065398058f117bb6314684ee9581
 
 ARG VERSION
 USER root
