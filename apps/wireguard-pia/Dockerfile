@@ -1,4 +1,4 @@
-FROM ghcr.io/aste88/wireguard:rolling@sha256:e3f4881054059babaf2659c6a8d10d35bd15ca2ff8c692beb1cf2779a1957366
+FROM ghcr.io/aste88/wireguard:rolling@sha256:334c573e44e386e2f36929daceed4d38f2b9b4ef71e2f3711cecc1525490b15f
 
 ARG VERSION
 USER root
