@@ -1,10 +1,10 @@
 FROM debian:buster-slim
 LABEL maintainer "Steven Barth <stbarth@cisco.com>"
 
-COPY ./anc /src/anc/
-COPY ./explorer /src/explorer/
-COPY ./grpc /src/grpc/
-COPY ./mvn/pom.xml /src/pom.xml
+COPY ./apps/anx/anc /src/anc/
+COPY ./apps/anx/explorer /src/explorer/
+COPY ./apps/anx/grpc /src/grpc/
+COPY ./apps/anx/pom.xml /src/pom.xml
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 RUN mkdir -p /usr/share/man/man1 && apt update && \
