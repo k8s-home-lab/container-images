@@ -1,0 +1,3 @@
+[submodule "apps/anx"]
+	path = apps/anx
+	url = https://github.com/cisco-ie/anx.git
