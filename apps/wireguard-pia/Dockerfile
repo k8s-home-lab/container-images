@@ -1,4 +1,4 @@
-FROM ghcr.io/k8s-home-lab/wireguard:rolling@sha256:334c573e44e386e2f36929daceed4d38f2b9b4ef71e2f3711cecc1525490b15f
+FROM ghcr.io/k8s-home-lab/wireguard:rolling@sha256:ddc5c7a6d34d925132fa7470cfafbbe0f6aad263bf8d409ce1b596d0c27cf1de
 
 ARG VERSION
 USER root
