@@ -1,4 +1,4 @@
-FROM ghcr.io/aste88/ubuntu-focal:rolling@sha256:dcd1c67f0944051da3eacfcbfee0afe173ab065398058f117bb6314684ee9581
+FROM ghcr.io/k8s-home-lab/ubuntu-focal:rolling@sha256:dcd1c67f0944051da3eacfcbfee0afe173ab065398058f117bb6314684ee9581
 
 ARG VERSION
 USER root
@@ -11,12 +11,12 @@ RUN \
   && apt-get -qq update \
   && \
   apt-get -qq install -y \
-    iptables \
-    iproute2 \
-    openresolv \
-    inetutils-ping \
-    sudo \
-    ${EXTRA_INSTALL_ARG} \
+  iptables \
+  iproute2 \
+  openresolv \
+  inetutils-ping \
+  sudo \
+  ${EXTRA_INSTALL_ARG} \
   && git clone https://git.zx2c4.com/wireguard-tools . \
   && git clone https://git.zx2c4.com/wireguard-linux-compat \
   && git checkout "v${VERSION}" \
@@ -33,10 +33,10 @@ RUN \
   && apt-get clean \
   && \
   rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/ \
-    /build \
+  /tmp/* \
+  /var/lib/apt/lists/* \
+  /var/tmp/ \
+  /build \
   && chmod -R u=rwX,go=rX /app \
   && printf "umask %d" "${UMASK:-0002}" >> /etc/bash.bashrc
 

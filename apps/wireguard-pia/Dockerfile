@@ -1,4 +1,4 @@
-FROM ghcr.io/aste88/wireguard:rolling@sha256:334c573e44e386e2f36929daceed4d38f2b9b4ef71e2f3711cecc1525490b15f
+FROM ghcr.io/k8s-home-lab/wireguard:rolling@sha256:334c573e44e386e2f36929daceed4d38f2b9b4ef71e2f3711cecc1525490b15f
 
 ARG VERSION
 USER root
@@ -10,9 +10,9 @@ RUN \
   apt-get -qq update \
   && \
   apt-get -qq install -y \
-    curl \
-    jq \
-    unzip \
+  curl \
+  jq \
+  unzip \
   && \
   curl -fsSL -o /tmp/app.zip "https://github.com/pia-foss/manual-connections/archive/refs/tags/v${VERSION}.zip" \
   && unzip -q /tmp/app.zip -d  /tmp \
@@ -28,10 +28,10 @@ RUN \
   && apt-get clean \
   && \
   rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/ \
-    /build \
+  /tmp/* \
+  /var/lib/apt/lists/* \
+  /var/tmp/ \
+  /build \
   && chmod -R u=rwX,go=rX /app \
   && printf "umask %d" "${UMASK:-0002}" >> /etc/bash.bashrc
 

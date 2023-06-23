@@ -2,9 +2,9 @@
 
 Work inspired and in the most part based on the [k8s-at-home](https://k8s-at-home.com/)'s team.
 
-These [container images](https://github.com/Aste88/container-images) are tailored for Kubernetes.
+These [container images](https://github.com/k8s-home-lab/container-images) are tailored for Kubernetes.
 
-Images are hosted on Github Container Registry [here](https://github.com/Aste88?tab=packages).
+Images are hosted on Github Container Registry [here](https://github.com/k8s-home-lab?tab=packages).
 
 ## Purpose
 
@@ -19,4 +19,4 @@ For configuration see [here](https://docs.k8s-at-home.com).
 We have a few outlets for getting support with our projects:
 
 - Visit k8s-at-home [Docs](https://docs.k8s-at-home.com/).
-- Bugs or feature requests should be opened in an [issue](https://github.com/Aste88/container-images/issues/new/choose).
+- Bugs or feature requests should be opened in an [issue](https://github.com/k8s-home-lab/container-images/issues/new/choose).
