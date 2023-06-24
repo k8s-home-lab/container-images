@@ -4,6 +4,13 @@
   ],
   packageRules: [
     {
+      "description": "Skip unmaintained",
+      "matchDatasources": ["docker"],
+      "matchPaths": [
+        "/!(unmaintained)/"
+      ]
+    }
+    {
       description: "Auto-merge Ubuntu base updates",
       matchDatasources: ["docker"],
       automerge: true,
