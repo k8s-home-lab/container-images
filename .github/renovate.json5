@@ -2,6 +2,12 @@
   extends: [
     "config:base"
   ],
+  "docker": {
+    "fileMatch": ["/!(unmaintained)/"]
+  },
+  "dockerfile": {
+    "fileMatch": ["/!(unmaintained)/"]
+  },
   packageRules: [
     {
       "description": "Skip unmaintained",
