@@ -2,20 +2,8 @@
   extends: [
     "config:base"
   ],
-  "docker": {
-    "fileMatch": ["/!(unmaintained)/"]
-  },
-  "dockerfile": {
-    "fileMatch": ["/!(unmaintained)/"]
-  },
+  "ignorePaths": ["/unmaintained/"],
   packageRules: [
-    {
-      "description": "Skip unmaintained",
-      "matchDatasources": ["docker"],
-      "matchPaths": [
-        "/!(unmaintained)/"
-      ]
-    }
     {
       description: "Auto-merge Ubuntu base updates",
       matchDatasources: ["docker"],
