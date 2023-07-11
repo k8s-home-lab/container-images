@@ -2,7 +2,7 @@
   extends: [
     "config:base"
   ],
-  "ignorePaths": ["/unmaintained/"],
+  "ignorePaths": ["unmaintained/"],
   packageRules: [
     {
       description: "Auto-merge Ubuntu base updates",
